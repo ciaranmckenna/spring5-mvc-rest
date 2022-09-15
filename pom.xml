@@ -78,6 +78,7 @@
 				<version>0.8.8</version>
 				<configuration>
 					<formats>
+						<propertyName>jacoco.agent.argLine</propertyName>
 						<format>html</format>
 						<format>xml</format>
 					</formats>

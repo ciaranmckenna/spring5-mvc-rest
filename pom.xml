@@ -76,6 +76,9 @@
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>0.8.8</version>
+				<configuration>
+					<propertyName>jacoco.agent.argLine</propertyName>
+				</configuration>
 				<executions>
 					<execution>
 						<goals>

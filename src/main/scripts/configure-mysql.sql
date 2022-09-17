@@ -7,10 +7,10 @@ CREATE DATABASE dev_fruit_shop;
 CREATE DATABASE prod_fruit_shop;
 
 #Create database service accounts
-CREATE USER 'dev_user'@'localhost' IDENTIFIED BY 'admin';
-CREATE USER 'prod_user'@'localhost' IDENTIFIED BY 'admin';
-CREATE USER 'dev_user'@'%' IDENTIFIED BY 'admin';
-CREATE USER 'prod_user'@'%' IDENTIFIED BY 'admin';
+CREATE USER 'dev_user'@'localhost' IDENTIFIED BY 'p@55w0rd';
+CREATE USER 'prod_user'@'localhost' IDENTIFIED BY 'p@55w0rd';
+CREATE USER 'dev_user'@'%' IDENTIFIED BY 'p@55w0rd';
+CREATE USER 'prod_user'@'%' IDENTIFIED BY 'p@55w0rd';
 
 #Database grants
 GRANT SELECT ON dev_user.* to 'dev_user'@'localhost';

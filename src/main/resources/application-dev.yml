@@ -3,9 +3,18 @@ spring:
     url: jdbc:mysql://localhost:3306/dev_fruit_shop
     username: dev_user
     password: p@55w0rd
+    platform: mysql
   jpa:
     hibernate:
       ddl-auto: validate
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     database: mysql
     show-sql: true
+#    properties:
+#          javax:
+#            persistence:
+#              schema-generation:
+#                create-source: metadata
+#                scripts:
+#                  action: create
+#                  create-target: cmk_database_create.sql

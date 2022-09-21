@@ -7,25 +7,29 @@ CREATE DATABASE dev_fruit_shop;
 CREATE DATABASE prod_fruit_shop;
 
 #Create database service accounts
-CREATE USER 'dev_user'@'localhost' IDENTIFIED BY 'p@55w0rd';
-CREATE USER 'prod_user'@'localhost' IDENTIFIED BY 'p@55w0rd';
-CREATE USER 'dev_user'@'%' IDENTIFIED BY 'p@55w0rd';
-CREATE USER 'prod_user'@'%' IDENTIFIED BY 'p@55w0rd';
+CREATE USER `dev_user` @ `localhost` IDENTIFIED BY `p@55w0rd`;
+CREATE USER `prod_user` @ `localhost` IDENTIFIED BY `p@55w0rd`;
+CREATE USER `dev_user` @ `%` IDENTIFIED BY `p@55w0rd`;
+CREATE USER `prod_user` @ `%` IDENTIFIED BY `p@55w0rd`;
 
-#Database grants
-GRANT SELECT ON dev_user.* to 'dev_user'@'localhost';
-GRANT INSERT ON dev_user.* to 'dev_user'@'localhost';
-GRANT DELETE ON dev_user.* to 'dev_user'@'localhost';
-GRANT UPDATE ON dev_user.* to 'dev_user'@'localhost';
-GRANT SELECT ON prod_user.* to 'prod_user'@'localhost';
-GRANT INSERT ON prod_user.* to 'prod_user'@'localhost';
-GRANT DELETE ON prod_user.* to 'prod_user'@'localhost';
-GRANT UPDATE ON prod_user.* to 'prod_user'@'localhost';
-GRANT SELECT ON dev_user.* to 'dev_user'@'%';
-GRANT INSERT ON dev_user.* to 'dev_user'@'%';
-GRANT DELETE ON dev_user.* to 'dev_user'@'%';
-GRANT UPDATE ON dev_user.* to 'dev_user'@'%';
-GRANT SELECT ON prod_user.* to 'prod_user'@'%';
-GRANT INSERT ON prod_user.* to 'prod_user'@'%';
-GRANT DELETE ON prod_user.* to 'prod_user'@'%';
-GRANT UPDATE ON prod_user.* to 'prod_user'@'%';
+#Database grants for dev_user
+GRANT SELECT ON `dev_fruit_shop`.* TO `dev_user`@`localhost`;
+GRANT INSERT ON `dev_fruit_shop`.* TO `dev_user`@`localhost`;
+GRANT UPDATE ON `dev_fruit_shop`.* TO `dev_user`@`localhost`;
+GRANT DELETE ON `dev_fruit_shop`.* TO `dev_user`@`localhost`;
+
+GRANT SELECT ON `dev_fruit_shop`.* TO `dev_user`@`%`;
+GRANT INSERT ON `dev_fruit_shop`.* TO `dev_user`@`%`;
+GRANT UPDATE ON `dev_fruit_shop`.* TO `dev_user`@`%`;
+GRANT DELETE ON `dev_fruit_shop`.* TO `dev_user`@`%`;
+
+#Database grants for prod_user
+GRANT SELECT ON `prod_fruit_shop`.* TO `prod_user`@`localhost`;
+GRANT INSERT ON `prod_fruit_shop`.* TO `prod_user`@`localhost`;
+GRANT UPDATE ON `prod_fruit_shop`.* TO `prod_user`@`localhost`;
+GRANT DELETE ON `prod_fruit_shop`.* TO `prod_user`@`localhost`;
+
+GRANT SELECT ON `prod_fruit_shop`.* TO `prod_user`@`%`;
+GRANT INSERT ON `prod_fruit_shop`.* TO `prod_user`@`%`;
+GRANT UPDATE ON `prod_fruit_shop`.* TO `prod_user`@`%`;
+GRANT DELETE ON `prod_fruit_shop`.* TO `prod_user`@`%`;

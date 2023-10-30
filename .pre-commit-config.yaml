@@ -3,9 +3,11 @@ repos:
   rev: v2.3.0
   hooks:
   - id: check-yaml
+  - id: end-of-file-fixer
   - id: trailing-whitespace
+
 - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
-  rev: v2.11.0
+  rev: a362181620503bf7446d3f5c98cc004b9403543d
   hooks:
   - id: pretty-format-java
     args: [--autofix]

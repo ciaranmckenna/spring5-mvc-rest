@@ -10,7 +10,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class VendorDTO {
 
-    private String name;
-    @JsonProperty("vendor_url")
-    private String vendorUrl;
+  private String name;
+
+  @JsonProperty("vendor_url")
+  private String vendorUrl;
 }

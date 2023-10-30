@@ -10,8 +10,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CustomerDTO {
 
-    private String firstname;
-    private String lastname;
-    @JsonProperty("customer_url")
-    private String customerUrl;
+  private String firstname;
+  private String lastname;
+
+  @JsonProperty("customer_url")
+  private String customerUrl;
 }

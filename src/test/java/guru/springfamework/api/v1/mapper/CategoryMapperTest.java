@@ -1,32 +1,30 @@
 package guru.springfamework.api.v1.mapper;
 
+import static org.junit.Assert.*;
+
 import guru.springfamework.api.v1.model.CategoryDTO;
 import guru.springfamework.domain.Category;
 import org.junit.Test;
 
-import java.util.Optional;
-
-import static org.junit.Assert.*;
-
 public class CategoryMapperTest {
 
-    public static final String NAME = "Joe";
-    public static final long ID = 1L;
-    CategoryMapper categoryMapper = CategoryMapper.INSTANCE;
+  public static final String NAME = "Joe";
+  public static final long ID = 1L;
+  CategoryMapper categoryMapper = CategoryMapper.INSTANCE;
 
-    @Test
-    public void categoryToCategoryDTO() {
+  @Test
+  public void categoryToCategoryDTO() {
 
-        //given
-        Category category = new Category();
-        category.setName(NAME);
-        category.setId(ID);
+    // given
+    Category category = new Category();
+    category.setName(NAME);
+    category.setId(ID);
 
-        //when
-        CategoryDTO categoryDTO = categoryMapper.categoryToCategoryDTO(category);
+    // when
+    CategoryDTO categoryDTO = categoryMapper.categoryToCategoryDTO(category);
 
-        //then
-        assertEquals(Long.valueOf(1L), categoryDTO.getId());
-        assertEquals(NAME, categoryDTO.getName());
-    }
+    // then
+    assertEquals(Long.valueOf(1L), categoryDTO.getId());
+    assertEquals(NAME, categoryDTO.getName());
+  }
 }

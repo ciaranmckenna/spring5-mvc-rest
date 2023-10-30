@@ -1,75 +1,68 @@
 package guru.springfamework.services;
 
+import static org.junit.Assert.*;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.when;
+
 import guru.springfamework.api.v1.mapper.CategoryMapper;
 import guru.springfamework.api.v1.model.CategoryDTO;
-import guru.springfamework.api.v1.model.CustomerDTO;
 import guru.springfamework.domain.Category;
 import guru.springfamework.repositories.CategoryRepository;
+import java.util.Arrays;
+import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.util.Arrays;
-import java.util.List;
-
-import static org.junit.Assert.*;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.when;
-
 public class CategoryServiceImplTest {
 
-    public static final Long ID = 2L;
-    public static final String NAME = "Jimmy";
+  public static final Long ID = 2L;
+  public static final String NAME = "Jimmy";
 
-    @Mock
-    CategoryRepository categoryRepository;
+  @Mock CategoryRepository categoryRepository;
 
-    @Mock
-    CategoryMapper categoryMapper;
+  @Mock CategoryMapper categoryMapper;
 
-    @InjectMocks
-    CategoryServiceImpl categoryService;
+  @InjectMocks CategoryServiceImpl categoryService;
 
+  @Before
+  public void setUp() throws Exception {
+    MockitoAnnotations.initMocks(this);
+    categoryService = new CategoryServiceImpl(CategoryMapper.INSTANCE, categoryRepository);
+  }
 
-    @Before
-    public void setUp() throws Exception {
-        MockitoAnnotations.initMocks(this);
-        categoryService = new CategoryServiceImpl(CategoryMapper.INSTANCE, categoryRepository);
+  @Test
+  public void getAllCategories() {
 
-    }
+    // given
+    List<Category> categories = Arrays.asList(new Category(), new Category(), new Category());
 
-    @Test
-    public void getAllCategories() {
+    when(categoryRepository.findAll()).thenReturn(categories);
 
-        //given
-        List<Category> categories = Arrays.asList(new Category(), new Category(),new Category());
+    // when
+    List<CategoryDTO> categoryDTOS = categoryService.getAllCategories();
 
-        when(categoryRepository.findAll()).thenReturn(categories);
+    // then
+    assertEquals(3, categoryDTOS.size());
+  }
 
-        //when
-        List<CategoryDTO> categoryDTOS = categoryService.getAllCategories();
+  @Test
+  public void getCategoryByName() {
 
-        //then
-        assertEquals(3, categoryDTOS.size());
-    }
+    // given
+    Category category = new Category();
+    category.setId(ID);
+    category.setName(NAME);
 
-    @Test
-    public void getCategoryByName() {
+    when(categoryRepository.findByName(anyString())).thenReturn(category);
 
-        //given
-        Category category = new Category();
-        category.setId(ID);
-        category.setName(NAME);
+    // when
+    CategoryDTO categoryDTO = categoryService.getCategoryByName(NAME);
 
-        when(categoryRepository.findByName(anyString())).thenReturn(category);
-
-        //when
-        CategoryDTO categoryDTO = categoryService.getCategoryByName(NAME);
-
-        //then
-        assertEquals(ID, categoryDTO.getId());
-        assertEquals(NAME, categoryDTO.getName());
-    }
+    // then
+    assertEquals(ID, categoryDTO.getId());
+    assertEquals(NAME, categoryDTO.getName());
+  }
 }

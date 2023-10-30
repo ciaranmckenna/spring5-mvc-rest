@@ -5,6 +5,7 @@ import guru.springfamework.api.v1.model.CategoryDTO;
 import guru.springfamework.repositories.CategoryRepository;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,6 +30,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public CategoryDTO getCategoryByName(String name) {
+        Timestamp timestampTemp = new Timestamp(1L);
         return categoryMapper.categoryToCategoryDTO(categoryRepository.findByName(name));
     }
 }
